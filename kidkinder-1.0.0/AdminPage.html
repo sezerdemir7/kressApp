@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Duyurular</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .form-group img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Admin Panel - Duyurular</h2>
+
+        <!-- Duyuru Ekleme Formu -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Yeni Duyuru Ekle</h5>
+                <form id="announcement-form">
+                    <div class="form-group">
+                        <label for="title">Başlık</label>
+                        <input type="text" class="form-control" id="title" placeholder="Duyuru başlığını girin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">İçerik</label>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Duyuru içeriğini yazın" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Fotoğraf</label>
+                        <input type="file" class="form-control-file" id="image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Duyuru Ekle</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Duyuruları Listeleme -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mevcut Duyurular</h5>
+                <ul class="list-group" id="announcement-list">
+                    <!-- Dinamik olarak duyurular burada listelenecek -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const apiBaseUrl = 'http://localhost:8080/v1/announcements';
+
+            // Form submit işlemi
+            $('#announcement-form').on('submit', function(event) {
+                event.preventDefault();
+                const title = $('#title').val();
+                const description = $('#description').val();
+                const imageFile = $('#image')[0].files[0];
+                const formData = new FormData();
+                formData.append('title', title);
+                formData.append('description', description);
+                formData.append('image', imageFile);
+
+                $.ajax({
+                    url: `${apiBaseUrl}/save`,
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        alert('Duyuru başarıyla eklendi!');
+                        $('#announcement-form')[0].reset();
+                        loadAnnouncements(); // Duyuruları yeniden yükle
+                    },
+                    error: function(error) {
+                        alert('Hata oluştu: ' + error.responseText);
+                    }
+                });
+            });
+
+            // Duyuruları yükleme
+            function loadAnnouncements() {
+                $.get(`${apiBaseUrl}/all`, function(data) {
+                    $('#announcement-list').empty();
+                    data.forEach(function(announcement) {
+                        $('#announcement-list').append(`
+                            <li class="list-group-item">
+                                <h5>${announcement.title}</h5>
+                                <p>${announcement.description}</p>
+                                <img src="${announcement.imageUrl}" alt="Duyuru Fotoğrafı">
+                                <p><small>${new Date(announcement.createdAt).toLocaleString()}</small></p>
+                            </li>
+                        `);
+                    });
+                });
+            }
+
+            // Sayfa yüklendiğinde duyuruları yükle
+            loadAnnouncements();
+        });
+    </script>
+</body>
+</html>
