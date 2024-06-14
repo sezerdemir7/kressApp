@@ -1,21 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Kullanıcı Girişi</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <form action="/perform_login" method="post">
-        <div>
-            <label for="username">Kullanıcı Adı:</label>
-            <input type="text" id="username" name="username">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Kullanıcı Girişi</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="username">Kullanıcı Adı:</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Şifre:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="password">Şifre:</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <div>
-            <button type="submit">Giriş Yap</button>
-        </div>
-    </form>
+    </div>
+
+    <!-- jQuery ve Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            const apiBaseUrl = 'http://localhost:8080/auth'; // API base URL
+
+            // Form submit işlemi
+            $('#login-form').on('submit', function(event) {
+                event.preventDefault(); // Form submit olayını durdur
+
+                const username = $('#username').val().trim(); // Boşlukları kaldırın
+                const password = $('#password').val().trim(); // Boşlukları kaldırın
+
+                // Veri doğrulama
+                if (!username || !password) {
+                    alert('Kullanıcı adı ve şifre boş olamaz!');
+                    return;
+                }
+
+                // Kullanıcı adı ve şifreyi içeren JSON verisi
+                const userData = {
+                    username: username,
+                    password: password
+                };
+
+                // AJAX isteği gönder
+                $.ajax({
+                    url: `${apiBaseUrl}/login`,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(userData),
+                    success: function(response) {
+                        // Yanıtı konsola yazdırarak yapısını kontrol edin
+                        console.log('Sunucudan gelen yanıt:', response);
+
+                        // Sunucunun başarılı giriş yanıtını kontrol edin
+                        if (response==true) {
+                            console.log('Login başarılı!', response);
+
+                            // Başarılı giriş sonrası yapılacak işlemler
+                            window.location.href = '/kressApp/kidkinder-1.0.0/AdminPage.html';
+                        } else {
+                            console.error('Login başarısız:', response.message);
+                            alert(response.message || 'Bilinmeyen hata oluştu.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Login hatası:', xhr.responseText);
+
+                        // Hata mesajını göster
+                        const errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).message : 'Bilinmeyen hata oluştu.';
+                        alert(errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
