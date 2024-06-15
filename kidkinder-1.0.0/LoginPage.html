@@ -70,11 +70,14 @@
                         console.log('Sunucudan gelen yanıt:', response);
 
                         // Sunucunun başarılı giriş yanıtını kontrol edin
-                        if (response==true) {
+                        if (response) {
                             console.log('Login başarılı!', response);
 
+                            // JWT tokeni localStorage'a kaydedin
+                            localStorage.setItem('token', response);
+
                             // Başarılı giriş sonrası yapılacak işlemler
-                            window.location.href = '/kressApp/kidkinder-1.0.0/AdminPage.html';
+                            window.location.href = 'AdminPage.html';
                         } else {
                             console.error('Login başarısız:', response.message);
                             alert(response.message || 'Bilinmeyen hata oluştu.');
