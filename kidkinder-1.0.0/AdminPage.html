@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,14 @@
         .container {
             margin-top: 20px;
         }
+
         .form-group img {
             max-width: 100%;
             margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2 class="text-center">Admin Panel - Duyurular</h2>
@@ -26,17 +29,33 @@
                 <form id="announcement-form">
                     <div class="form-group">
                         <label for="title">Başlık</label>
-                        <input type="text" class="form-control" id="title" placeholder="Duyuru başlığını girin" required>
+                        <input type="text" class="form-control" id="title" placeholder="Duyuru başlığını girin"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="description">İçerik</label>
-                        <textarea class="form-control" id="description" rows="3" placeholder="Duyuru içeriğini yazın" required></textarea>
+                        <textarea class="form-control" id="description" rows="3"
+                            placeholder="Duyuru içeriğini yazın" required></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="announcement-image">Fotoğraf</label>
+                        <input type="file" class="form-control-file" id="announcement-image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Duyuru Ekle</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Resim Yükleme Formu -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Resim Yükle</h5>
+                <form id="image-upload-form">
                     <div class="form-group">
                         <label for="image">Fotoğraf</label>
                         <input type="file" class="form-control-file" id="image" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Duyuru Ekle</button>
+                    <button type="submit" class="btn btn-primary">Resim Yükle</button>
                 </form>
             </div>
         </div>
@@ -55,66 +74,105 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-      $(document).ready(function() {
-    const apiBaseUrl = 'http://localhost:8080/v1/announcements';
-
-    // Form submit işlemi
-    $('#announcement-form').on('submit', function(event) {
-        event.preventDefault();
-        const title = $('#title').val();
-        const description = $('#description').val();
-        const imageFile = $('#image')[0].files[0];
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('image', imageFile);
-
-        // Retrieve the JWT token from local storage
+        // Token tanımlaması
         const token = localStorage.getItem('token');
-        
-        if (!token) {
-            alert('JWT token bulunamadı. Lütfen tekrar giriş yapın.');
-            return;
-        }
 
-        $.ajax({
-            url: `${apiBaseUrl}/save`,
-            type: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                alert('Duyuru başarıyla eklendi!');
-                $('#announcement-form')[0].reset();
-                loadAnnouncements();
-                console.log(token) // Duyuruları yeniden yükle
-            },
-            error: function(error) {
-                console.log(token)
-                alert('Hata oluştu: ' + error.responseText);
+        $(document).ready(function () {
+            const apiBaseUrl = 'http://localhost:8080/v1/announcements';
+
+            // Duyuru Ekleme Formu submit işlemi
+            $('#announcement-form').on('submit', function (event) {
+                event.preventDefault();
+                const title = $('#title').val();
+                const description = $('#description').val();
+                const imageFile = $('#announcement-image')[0].files[0]; // ID'yi düzelttim
+                const formData = new FormData();
+                formData.append('title', title);
+                formData.append('description', description);
+                formData.append('image', imageFile);
+
+                if (!token) {
+                    alert('JWT token bulunamadı. Lütfen tekrar giriş yapın.');
+                    return;
+                }
+
+                $.ajax({
+                    url: `${apiBaseUrl}/save`,
+                    type: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        alert('Duyuru başarıyla eklendi!');
+                        $('#announcement-form')[0].reset();
+                        loadAnnouncements();
+                    },
+                    error: function (error) {
+                        alert('Hata oluştu: ' + error.responseText);
+                    }
+                });
+            });
+
+            // Resim Yükleme Formu submit işlemi
+            $('#image-upload-form').on('submit', function (event) {
+                event.preventDefault();
+                const imageFile = $('#image')[0].files[0];
+                const formData = new FormData();
+                formData.append('image', imageFile);
+
+                $.ajax({
+                    url: 'http://localhost:8080/v1/image/upload',
+                    type: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        alert('Resim başarıyla yüklendi!');
+                        // Başka işlemler yapabilirsiniz
+                    },
+                    error: function (error) {
+                        alert('Hata oluştu: ' + error.responseText);
+                    }
+                });
+            });
+
+            // Duyuruları yükleme işlemi
+            function loadAnnouncements() {
+                $.ajax({
+                    url: `${apiBaseUrl}/all`,
+                    type: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    success: function (data) {
+                        $('#announcement-list').empty();
+                        data.forEach(function (announcement) {
+                            $('#announcement-list').append(`
+                                <li class="list-group-item">
+                                    <h5>${announcement.title}</h5>
+                                    <p>${announcement.description}</p>
+                                    <img src="${announcement.imageUrl}" alt="Duyuru Fotoğrafı">
+                                    <p><small>${new Date(announcement.createdAt).toLocaleString()}</small></p>
+                                </li>
+                            `);
+                        });
+                    },
+                    error: function (error) {
+                        console.log('Duyurular yüklenemedi:', error);
+                    }
+                });
             }
-        });
-    });
 
-    // Duyuruları yüklemek için bir işlev (örnek)
-    function loadAnnouncements() {
-        $.ajax({
-            url: `${apiBaseUrl}/all`,
-            type: 'GET',
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(error) {
-                console.log('Duyurular yüklenemedi:', error);
-            }
+            // Sayfa yüklendiğinde duyuruları yükle
+            loadAnnouncements();
         });
-    }
-
-    loadAnnouncements();
-});
     </script>
 </body>
+
 </html>
