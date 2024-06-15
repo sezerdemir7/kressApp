@@ -1,535 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>KidKinder - Kindergarten Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Free HTML Templates" name="keywords" />
-    <meta content="Free HTML Templates" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
-    <title>Testimonials</title>
-    <!-- Include Owl Carousel CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <style>
-      .testimonial-item {
-        transition: transform 0.5s ease-in-out;
-      }
-      .testimonial-item:hover {
-        transform: scale(1.05);
-      }
-      .card-body h3 {
-        font-size: 2rem;
-      }
-      .card-text {
-        font-size: 1.1rem;
-      }
-      .author-info {
-        font-style: italic;
-        font-size: 0.9rem;
-      }
-      .carousel-control-prev-icon,
-      .carousel-control-next-icon {
-        width: 25px;
-        height: 25px;
-        background-color: black;
-        mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 8 8"><path d="M5.5 0l-5 4 5 4v-8z"/></svg>');
-        mask-size: 25px;
-        mask-repeat: no-repeat;
-      }
-      .carousel-control-next-icon {
-        transform: rotate(180deg);
-      }
-    </style>
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="utf-8" />
+  <title>KidKinder - Kindergarten Website Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
 
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
+  <title>Testimonials</title>
+  <!-- Include Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+  <style>
+    .testimonial-item {
+      transition: transform 0.5s ease-in-out;
+    }
 
-    <!-- Flaticon Font -->
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
+    .testimonial-item:hover {
+      transform: scale(1.05);
+    }
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    .card-body h3 {
+      font-size: 2rem;
+    }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
-    <script>
-      $(document).ready(function() {
-          $("#navbar-container").load("Navbar.html");
-          $("#footer-container").load("Footer.html");
-      });
+    .card-text {
+      font-size: 1.1rem;
+    }
+
+    .author-info {
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 25px;
+      height: 25px;
+      background-color: black;
+      mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 8 8"><path d="M5.5 0l-5 4 5 4v-8z"/></svg>');
+      mask-size: 25px;
+      mask-repeat: no-repeat;
+    }
+
+    .carousel-control-next-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Flaticon Font -->
+  <link href="lib/flaticon/font/flaticon.css" rel="stylesheet" />
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+  <script>
+    $(document).ready(function () {
+      $("#navbar-container").load("Navbar.html");
+      $("#footer-container").load("Footer.html");
+      loadTopAnnouncements();
+      $('#loadAllBtn').on('click', function () {
+      window.location.href = 'Announcement.html';
+    });
+    });
   </script>
-  </head>
+</head>
 
-  <body>
-    <div id="navbar-container"></div>
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
-      <div class="row align-items-center px-3">
-        <div class="col-lg-6 text-center text-lg-left">
-          <h4 class="text-white mb-4 mt-5 mt-lg-0">Özel İlkAdım Kreş</h4>
-          <h1 class="display-3 font-weight-bold text-white">
-            Çocuk Eğitiminde Yeni Yaklaşım
-          </h1>
-          <p class="text-white mb-4">
-            Özel İlkAdım Kreş olarak, çocuklarınızın eğitimine yenilikçi ve çağdaş bir yaklaşımla katkıda bulunuyoruz.
-             Kreşimizde, her çocuğun bireysel gelişimini destekleyici programlar ve aktivitelerle dolu bir eğitim ortamı sunuyoruz. 
-             Uzman eğitimcilerimiz, çocuklarınızın sosyal, duygusal ve bilişsel becerilerini en üst düzeye çıkaracak şekilde tasarlanmış müfredatla, onların geleceğe güvenle adım atmalarını sağlıyor.
-          </p>
-         
-          
-        </div>
-        <div class="col-lg-6 text-center text-lg-right">
-          <img class="img-fluid mt-5" src="img/header.png" alt="" />
-        </div>
+<body>
+  <div id="navbar-container"></div>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+    <div class="row align-items-center px-3">
+      <div class="col-lg-6 text-center text-lg-left">
+        <h4 class="text-white mb-4 mt-5 mt-lg-0">Özel İlkAdım Kreş</h4>
+        <h1 class="display-3 font-weight-bold text-white">
+          Çocuk Eğitiminde Yeni Yaklaşım
+        </h1>
+        <p class="text-white mb-4">
+          Özel İlkAdım Kreş olarak, çocuklarınızın eğitimine yenilikçi ve çağdaş bir yaklaşımla katkıda bulunuyoruz.
+          Kreşimizde, her çocuğun bireysel gelişimini destekleyici programlar ve aktivitelerle dolu bir eğitim ortamı
+          sunuyoruz.
+          Uzman eğitimcilerimiz, çocuklarınızın sosyal, duygusal ve bilişsel becerilerini en üst düzeye çıkaracak
+          şekilde tasarlanmış müfredatla, onların geleceğe güvenle adım atmalarını sağlıyor.
+        </p>
+
+
+      </div>
+      <div class="col-lg-6 text-center text-lg-right">
+        <img class="img-fluid mt-5" src="img/header.png" alt="" />
       </div>
     </div>
-
-      <!-- About Start -->
-      <div class="container-fluid py-5">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-5">
-              <img
-                class="img-fluid rounded mb-5 mb-lg-0"
-                src="photos\IMG-20240613-WA0030.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-lg-7">
-              <p class="section-title pr-5">
-                <span class="pr-2">Hakkımızda daha fazla bilgi öğrenin</span>
-              </p>
-              <h1 class="mb-4">Çocuklarınız için en iyisi</h1>
-              <p>
-                Özel İlkAdım Kreş olarak, çocuklarınızın en değerli varlıklarınız olduğunu biliyoruz ve onların eğitimine büyük bir özen gösteriyoruz. Kreşimizde, her çocuğun bireysel ihtiyaçlarına yönelik özel programlar sunarak onların potansiyellerini en üst düzeye çıkarmayı hedefliyoruz. 
-                
-              <div class="row pt-2 pb-4">
-                <div class="col-6 col-md-4">
-                  <img class="img-fluid rounded" src="photos\IMG-20240613-WA0008.jpg" alt="" />
-                </div>
-                <div class="col-6 col-md-8">
-                  <ul class="list-inline m-0">
-                    <li class="py-2 border-top border-bottom">
-                      <i class="fa fa-check text-primary mr-3"></i>Uzman Kadro
-             
-                    </li>
-                    <li class="py-2 border-bottom">
-                      <i class="fa fa-check text-primary mr-3"></i> Eğitsel etkinlikler
-                     
-                    </li>
-                    <li class="py-2 border-bottom">
-                      <i class="fa fa-check text-primary mr-3"></i>Yılların tecrübesi
-                      
-                    </li>
-                  </ul>
-                </div>
-              </div>
-         
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- About End -->
-    <!-- Header End -->
-    <div class="container-fluid pt-5">
-      <div class="container pb-3">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 pb-1">
-            <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
-              <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
-              <div class="pl-4">
-                <h4>Oyun Alanı</h4>
-                <p class="m-0">
-                  Çocuklarımıza güvenli ve eğlenceli bir ortam sunuyoruz. Oyun alanlarımızda çocuklar, arkadaşlarıyla oynayarak sosyal becerilerini geliştiriyor ve fiziksel aktivitelerle sağlıklı bir yaşam sürdürmenin temellerini atıyor.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 pb-1">
-            <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
-              <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
-              <div class="pl-4">
-                <h4>Müzik ve Dans</h4>
-                <p class="m-0">
-                  Müzik ve dans aktivitelerimizle çocukların ritim duygusunu ve özgüvenini artırıyoruz. Her çocuk, yeteneklerini keşfetme ve geliştirme fırsatı buluyor.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 pb-1">
-            <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
-              <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
-              <div class="pl-4">
-                <h4>Sanat ve El İşi</h4>
-                <p class="m-0">
-                  Sanat ve el işi etkinliklerimizle çocukların yaratıcılıklarını ve ince motor becerilerini geliştiriyoruz. Renkli ve eğlenceli projelerle, her çocuk kendi sanat eserini oluşturuyor.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 pb-1">
-            <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
-              <i class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"></i>
-              <div class="pl-4">
-                <h4>Güvenli Ulaşım</h4>
-                <p class="m-0">
-                  Çocuklarınızın güvenliği bizim için en önemli önceliktir. Güvenli ulaşım hizmetlerimizle, çocuklarınızın okula ve eve rahatça ulaşmasını sağlıyoruz.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 pb-1">
-            <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
-              <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
-              <div class="pl-4">
-                <h4>Sağlıklı Beslenme</h4>
-                <p class="m-0">
-                  Çocuklarımızın sağlıklı ve dengeli beslenmelerine özen gösteriyoruz. Lezzetli ve besleyici öğünlerle, onların gelişimlerine katkı sağlıyoruz.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 pb-1">
-            <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
-              <i class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"></i>
-              <div class="pl-4">
-                <h4>Eğitici Geziler</h4>
-                <p class="m-0">
-                  Çocuklarımızın dünyayı keşfetmeleri ve yeni şeyler öğrenmeleri için eğitici geziler düzenliyoruz. Bu gezilerle, onların merak duygusunu ve bilgiye olan ilgisini artırıyoruz.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  
-
-    <!-- Class Start -->
-    <div class="container-fluid pt-5">
-      <div class="container">
-        <div class="text-center pb-2">
-          <p class="section-title px-5">
-            <span class="px-2">Popüler Sınıflarımız </span>
-          </p>
-          <h1 class="mb-4">Çocuklar için Sınıflarımız</h1>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 mb-5">
-            <div class="card border-0 bg-light shadow-sm pb-2">
-              <img class="card-img-top mb-2" src="photos\WhatsApp Image 2024-06-13 at 13.25.14_2b418be7.jpg" alt="" />
-              <div class="card-body text-center">
-                <h4 class="card-title">Boyama sınıfı</h4>
-                <p class="card-text">
-                 Geniş
-                </p>
-              </div>
-              <div class="card-footer bg-transparent py-4 px-5">
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>yaş aralığı</strong>
-                  </div>
-                  <div class="col-6 py-1">3 - 6 Years</div>
-                </div>
-               
-              </div>
-              <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-5">
-            <div class="card border-0 bg-light shadow-sm pb-2">
-              <img class="card-img-top mb-2" src="photos\WhatsApp Image 2024-06-13 at 13.25.14_d947fd68.jpg" alt="" />
-              <div class="card-body text-center">
-                <h4 class="card-title">Language Learning</h4>
-                <p class="card-text">
-                  Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
-                  ipsum duo et no et, ipsum ipsum erat duo amet clita duo
-                </p>
-              </div>
-              <div class="card-footer bg-transparent py-4 px-5">
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Age of Kids</strong>
-                  </div>
-                  <div class="col-6 py-1">3 - 6 Years</div>
-                </div>
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Total Seats</strong>
-                  </div>
-                  <div class="col-6 py-1">40 Seats</div>
-                </div>
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Class Time</strong>
-                  </div>
-                  <div class="col-6 py-1">08:00 - 10:00</div>
-                </div>
-                <div class="row">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Tution Fee</strong>
-                  </div>
-                  <div class="col-6 py-1">$290 / Month</div>
-                </div>
-              </div>
-              <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-5">
-            <div class="card border-0 bg-light shadow-sm pb-2">
-              <img class="card-img-top mb-2" src="img/class-3.jpg" alt="" />
-              <div class="card-body text-center">
-                <h4 class="card-title">Basic Science</h4>
-                <p class="card-text">
-                  Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
-                  ipsum duo et no et, ipsum ipsum erat duo amet clita duo
-                </p>
-              </div>
-              <div class="card-footer bg-transparent py-4 px-5">
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Age of Kids</strong>
-                  </div>
-                  <div class="col-6 py-1">3 - 6 Years</div>
-                </div>
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Total Seats</strong>
-                  </div>
-                  <div class="col-6 py-1">40 Seats</div>
-                </div>
-                <div class="row border-bottom">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Class Time</strong>
-                  </div>
-                  <div class="col-6 py-1">08:00 - 10:00</div>
-                </div>
-                <div class="row">
-                  <div class="col-6 py-1 text-right border-right">
-                    <strong>Tution Fee</strong>
-                  </div>
-                  <div class="col-6 py-1">$290 / Month</div>
-                </div>
-              </div>
-              <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Class End -->
-
-
-    <!-- Team Start -->
-    <div class="container-fluid pt-5">
-      <div class="container">
-        <div class="text-center pb-2">
-          <p class="section-title px-5">
-            <span class="px-2">Our Teachers</span>
-          </p>
-          <h1 class="mb-4">Meet Our Teachers</h1>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="img/team-1.jpg" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Julia Smith</h4>
-            <i>Music Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="img/team-2.jpg" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Jhon Doe</h4>
-            <i>Language Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="img/team-3.jpg" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Mollie Ross</h4>
-            <i>Dance Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="img/team-4.jpg" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Donald John</h4>
-            <i>Art Teacher</i>
-          </div>
-        </div>
-      </div>
-    </div>
- <!-- Team End -->
-  
-<!-- Testimonial Start -->
-
-
-
-
-<div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" id="carousel-inner">
-      <!-- Testimonials will be injected here -->
   </div>
-  <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+
+  <!-- About Start -->
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5">
+          <img class="img-fluid rounded mb-5 mb-lg-0" src="photos\IMG-20240613-WA0030.jpg" alt="" />
+        </div>
+        <div class="col-lg-7">
+          <p class="section-title pr-5">
+            <span class="pr-2">Hakkımızda daha fazla bilgi öğrenin</span>
+          </p>
+          <h1 class="mb-4">Çocuklarınız için en iyisi</h1>
+          <p>
+            Özel İlkAdım Kreş olarak, çocuklarınızın en değerli varlıklarınız olduğunu biliyoruz ve onların eğitimine
+            büyük bir özen gösteriyoruz. Kreşimizde, her çocuğun bireysel ihtiyaçlarına yönelik özel programlar sunarak
+            onların potansiyellerini en üst düzeye çıkarmayı hedefliyoruz.
+
+          <div class="row pt-2 pb-4">
+            <div class="col-6 col-md-4">
+              <img class="img-fluid rounded" src="photos\IMG-20240613-WA0008.jpg" alt="" />
+            </div>
+            <div class="col-6 col-md-8">
+              <ul class="list-inline m-0">
+                <li class="py-2 border-top border-bottom">
+                  <i class="fa fa-check text-primary mr-3"></i>Uzman Kadro
+
+                </li>
+                <li class="py-2 border-bottom">
+                  <i class="fa fa-check text-primary mr-3"></i> Eğitsel etkinlikler
+
+                </li>
+                <li class="py-2 border-bottom">
+                  <i class="fa fa-check text-primary mr-3"></i>Yılların tecrübesi
+
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- About End -->
+  <!-- Header End -->
+  <div class="container-fluid pt-5">
+    <div class="container pb-3">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
+            <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
+            <div class="pl-4">
+              <h4>Oyun Alanı</h4>
+              <p class="m-0">
+                Çocuklarımıza güvenli ve eğlenceli bir ortam sunuyoruz. Oyun alanlarımızda çocuklar, arkadaşlarıyla
+                oynayarak sosyal becerilerini geliştiriyor ve fiziksel aktivitelerle sağlıklı bir yaşam sürdürmenin
+                temellerini atıyor.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
+            <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
+            <div class="pl-4">
+              <h4>Müzik ve Dans</h4>
+              <p class="m-0">
+                Müzik ve dans aktivitelerimizle çocukların ritim duygusunu ve özgüvenini artırıyoruz. Her çocuk,
+                yeteneklerini keşfetme ve geliştirme fırsatı buluyor.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
+            <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
+            <div class="pl-4">
+              <h4>Sanat ve El İşi</h4>
+              <p class="m-0">
+                Sanat ve el işi etkinliklerimizle çocukların yaratıcılıklarını ve ince motor becerilerini
+                geliştiriyoruz. Renkli ve eğlenceli projelerle, her çocuk kendi sanat eserini oluşturuyor.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
+            <i class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"></i>
+            <div class="pl-4">
+              <h4>Güvenli Ulaşım</h4>
+              <p class="m-0">
+                Çocuklarınızın güvenliği bizim için en önemli önceliktir. Güvenli ulaşım hizmetlerimizle, çocuklarınızın
+                okula ve eve rahatça ulaşmasını sağlıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
+            <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
+            <div class="pl-4">
+              <h4>Sağlıklı Beslenme</h4>
+              <p class="m-0">
+                Çocuklarımızın sağlıklı ve dengeli beslenmelerine özen gösteriyoruz. Lezzetli ve besleyici öğünlerle,
+                onların gelişimlerine katkı sağlıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 pb-1">
+          <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px">
+            <i class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"></i>
+            <div class="pl-4">
+              <h4>Eğitici Geziler</h4>
+              <p class="m-0">
+                Çocuklarımızın dünyayı keşfetmeleri ve yeni şeyler öğrenmeleri için eğitici geziler düzenliyoruz. Bu
+                gezilerle, onların merak duygusunu ve bilgiye olan ilgisini artırıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Class Start -->
+  <div class="container-fluid pt-5">
+    <div class="container">
+      <div class="text-center pb-2">
+        <p class="section-title px-5">
+          <span class="px-2">Popüler Sınıflarımız </span>
+        </p>
+        <h1 class="mb-4">Çocuklar için Sınıflarımız</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-5">
+          <div class="card border-0 bg-light shadow-sm pb-2">
+            <img class="card-img-top mb-2" src="photos\WhatsApp Image 2024-06-13 at 13.25.14_2b418be7.jpg" alt="" />
+            <div class="card-body text-center">
+              <h4 class="card-title">Boyama sınıfı</h4>
+              <p class="card-text">
+                Geniş
+              </p>
+            </div>
+            <div class="card-footer bg-transparent py-4 px-5">
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>yaş aralığı</strong>
+                </div>
+                <div class="col-6 py-1">3 - 6 Years</div>
+              </div>
+
+            </div>
+            <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-5">
+          <div class="card border-0 bg-light shadow-sm pb-2">
+            <img class="card-img-top mb-2" src="photos\WhatsApp Image 2024-06-13 at 13.25.14_d947fd68.jpg" alt="" />
+            <div class="card-body text-center">
+              <h4 class="card-title">Language Learning</h4>
+              <p class="card-text">
+                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
+                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
+              </p>
+            </div>
+            <div class="card-footer bg-transparent py-4 px-5">
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Age of Kids</strong>
+                </div>
+                <div class="col-6 py-1">3 - 6 Years</div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Total Seats</strong>
+                </div>
+                <div class="col-6 py-1">40 Seats</div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Class Time</strong>
+                </div>
+                <div class="col-6 py-1">08:00 - 10:00</div>
+              </div>
+              <div class="row">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Tution Fee</strong>
+                </div>
+                <div class="col-6 py-1">$290 / Month</div>
+              </div>
+            </div>
+            <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-5">
+          <div class="card border-0 bg-light shadow-sm pb-2">
+            <img class="card-img-top mb-2" src="img/class-3.jpg" alt="" />
+            <div class="card-body text-center">
+              <h4 class="card-title">Basic Science</h4>
+              <p class="card-text">
+                Justo ea diam stet diam ipsum no sit, ipsum vero et et diam
+                ipsum duo et no et, ipsum ipsum erat duo amet clita duo
+              </p>
+            </div>
+            <div class="card-footer bg-transparent py-4 px-5">
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Age of Kids</strong>
+                </div>
+                <div class="col-6 py-1">3 - 6 Years</div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Total Seats</strong>
+                </div>
+                <div class="col-6 py-1">40 Seats</div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Class Time</strong>
+                </div>
+                <div class="col-6 py-1">08:00 - 10:00</div>
+              </div>
+              <div class="row">
+                <div class="col-6 py-1 text-right border-right">
+                  <strong>Tution Fee</strong>
+                </div>
+                <div class="col-6 py-1">$290 / Month</div>
+              </div>
+            </div>
+            <a href="" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Class End -->
+
+
+  <!-- Team Start -->
+  <div class="container-fluid pt-5">
+    <div class="container">
+      <div class="text-center pb-2">
+        <p class="section-title px-5">
+          <span class="px-2">Our Teachers</span>
+        </p>
+        <h1 class="mb-4">Meet Our Teachers</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-3 text-center team mb-5">
+          <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+            <img class="img-fluid w-100" src="img/team-1.jpg" alt="" />
+            <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <h4>Julia Smith</h4>
+          <i>Music Teacher</i>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center team mb-5">
+          <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+            <img class="img-fluid w-100" src="img/team-2.jpg" alt="" />
+            <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <h4>Jhon Doe</h4>
+          <i>Language Teacher</i>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center team mb-5">
+          <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+            <img class="img-fluid w-100" src="img/team-3.jpg" alt="" />
+            <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <h4>Mollie Ross</h4>
+          <i>Dance Teacher</i>
+        </div>
+        <div class="col-md-6 col-lg-3 text-center team mb-5">
+          <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+            <img class="img-fluid w-100" src="img/team-4.jpg" alt="" />
+            <div class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute">
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-light text-center px-0" style="width: 38px; height: 38px" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <h4>Donald John</h4>
+          <i>Art Teacher</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Team End -->
+
+  <!-- Testimonial Start -->
+
+
+
+
+  <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" id="carousel-inner">
+      <!-- Testimonials will be injected here -->
+    </div>
+    <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+    </a>
+    <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<!-- Form to Add Testimonial -->
-<div class="container-fluid py-5 bg-light">
-  <div class="container p-0">
-    <div class="text-center pb-2">
-      <h2 class="mb-4">Yorum Ekle</h2>
-    </div>
-    <form id="testimonial-form">
-      <div class="form-group">
-        <label for="Title">Title</label>
-        <input type="text" class="form-control" id="Title" required />
-      </div>
-
-      <div class="form-group">
-        <label for="testimonialText">Yorum</label>
-        <textarea class="form-control" id="testimonialText" rows="3" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="parentName">Kullanıcı Adı</label>
-        <input type="text" class="form-control" id="parentName" required />
-      </div>
-      
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </a>
   </div>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    fetchTestimonials();
-  });
-async function fetchTestimonials() {
-    try {
+  <!-- Form to Add Testimonial -->
+  <div class="container-fluid py-5 bg-light">
+    <div class="container p-0">
+      <div class="text-center pb-2">
+        <h2 class="mb-4">Yorum Ekle</h2>
+      </div>
+      <form id="testimonial-form">
+        <div class="form-group">
+          <label for="Title">Title</label>
+          <input type="text" class="form-control" id="Title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="testimonialText">Yorum</label>
+          <textarea class="form-control" id="testimonialText" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="parentName">Kullanıcı Adı</label>
+          <input type="text" class="form-control" id="parentName" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+
+    
+
+    document.addEventListener('DOMContentLoaded', function () {
+      fetchTestimonials();
+    });
+    async function fetchTestimonials() {
+      try {
         const response = await fetch('http://localhost:8080/v1/comment/all');
         const testimonials = await response.json();
 
@@ -537,19 +485,19 @@ async function fetchTestimonials() {
         carouselInner.innerHTML = ''; // Clear previous testimonials
 
         for (let i = 0; i < testimonials.length; i += 3) {
-            const carouselItem = document.createElement('div');
-            carouselItem.classList.add('carousel-item');
-            if (i === 0) carouselItem.classList.add('active'); // First item should be active
+          const carouselItem = document.createElement('div');
+          carouselItem.classList.add('carousel-item');
+          if (i === 0) carouselItem.classList.add('active'); // First item should be active
 
-            const row = document.createElement('div');
-            row.classList.add('row', 'justify-content-center');
+          const row = document.createElement('div');
+          row.classList.add('row', 'justify-content-center');
 
-            for (let j = i; j < i + 3 && j < testimonials.length; j++) {
-                const testimonial = testimonials[j];
-                const testimonialItem = document.createElement('div');
-                testimonialItem.classList.add('testimonial-item', 'col-md-3');
+          for (let j = i; j < i + 3 && j < testimonials.length; j++) {
+            const testimonial = testimonials[j];
+            const testimonialItem = document.createElement('div');
+            testimonialItem.classList.add('testimonial-item', 'col-md-3');
 
-                testimonialItem.innerHTML = `
+            testimonialItem.innerHTML = `
                     <div class="card bg-light shadow-sm rounded mb-4 p-4">
                         <div class="card-body">
                             <h3 class="fas fa-quote-left text-primary mr-3"></h3>
@@ -563,175 +511,130 @@ async function fetchTestimonials() {
                         </div>
                     </div>
                 `;
-                row.appendChild(testimonialItem);
-            }
+            row.appendChild(testimonialItem);
+          }
 
-            carouselItem.appendChild(row);
-            carouselInner.appendChild(carouselItem);
+          carouselItem.appendChild(row);
+          carouselInner.appendChild(carouselItem);
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error fetching testimonials:', error);
-    }
-}
-  document.getElementById('testimonial-form').addEventListener('submit', async function(event) {
-    event.preventDefault();
-
-    const title = document.getElementById('Title').value;
-    const content = document.getElementById('testimonialText').value;
-    const authorName = document.getElementById('parentName').value;
-
-    const newTestimonial = {
-      title: title,
-      content: content,
-      authorName: authorName,
-    };
-
-    try {
-      const response = await fetch('http://localhost:8080/v1/comment/save', { // Replace with your API endpoint
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newTestimonial)
-      });
-
-      if (response.ok) {
-        // Fetch and display all testimonials including the new one
-        fetchTestimonials();
-        // Clear the form
-        document.getElementById('testimonial-form').reset();
-      } else {
-        console.error('Failed to add testimonial');
       }
-    } catch (error) {
-      console.error('Error adding testimonial:', error);
     }
-  });
-</script>
+    document.getElementById('testimonial-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const title = document.getElementById('Title').value;
+      const content = document.getElementById('testimonialText').value;
+      const authorName = document.getElementById('parentName').value;
+
+      const newTestimonial = {
+        title: title,
+        content: content,
+        authorName: authorName,
+      };
+
+      try {
+        const response = await fetch('http://localhost:8080/v1/comment/save', { // Replace with your API endpoint
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newTestimonial)
+        });
+
+        if (response.ok) {
+          // Fetch and display all testimonials including the new one
+          fetchTestimonials();
+          // Clear the form
+          document.getElementById('testimonial-form').reset();
+        } else {
+          console.error('Failed to add testimonial');
+        }
+      } catch (error) {
+        console.error('Error adding testimonial:', error);
+      }
+    });
+
+    function loadTopAnnouncements() {
+      $.ajax({
+        url: 'http://localhost:8080/v1/announcements/top3',
+        type: 'GET',
+        success: function (data) {
+          let announcementsContainer = $('.row.pb-3');
+          announcementsContainer.empty(); // Clear any existing content
+
+          data.forEach(announcement => {
+            let announcementItem = `
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm mb-2">
+                                <img class="card-img-top mb-2" src="${announcement.imageUrl}" alt="Announcement Image" />
+                                <div class="card-body bg-light text-center p-4">
+                                    <h4 class="">${announcement.title}</h4>
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <small class="mr-3"><i class="fa fa-user text-primary"></i> Admin</small>
+                                        <small class="mr-3"><i class="fa fa-folder text-primary"></i> Category</small>
+                                        <small class="mr-3"><i class="fa fa-comments text-primary"></i> Comments</small>
+                                    </div>
+                                    <p>${announcement.description}</p>
+                                <a href="announcement-detail.html?id=${announcement.id}" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+                                </div>
+                            </div>
+                        </div>`;
+            announcementsContainer.append(announcementItem);
+          });
+        },
+        error: function (error) {
+          console.log('Duyurular yüklenemedi:', error);
+        }
+      });
+    }
+  </script>
 
 
-    <!-- Blog Start -->
-    <div class="container-fluid pt-5">
-      <div class="container">
-        <div class="text-center pb-2">
-          <p class="section-title px-5">
-            <span class="px-2">Latest Blog</span>
-          </p>
-          <h1 class="mb-4">Latest Articles From Blog</h1>
-        </div>
-        <div class="row pb-3">
-          <div class="col-lg-4 mb-4">
-            <div class="card border-0 shadow-sm mb-2">
-              <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="" />
-              <div class="card-body bg-light text-center p-4">
-                <h4 class="">Diam amet eos at no eos</h4>
-                <div class="d-flex justify-content-center mb-3">
-                  <small class="mr-3"
-                    ><i class="fa fa-user text-primary"></i> Admin</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-folder text-primary"></i> Web Design</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-comments text-primary"></i> 15</small
-                  >
-                </div>
-                <p>
-                  Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                  eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                  lorem. Tempor ipsum justo amet stet...
-                </p>
-                <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                  >Read More</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <div class="card border-0 shadow-sm mb-2">
-              <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="" />
-              <div class="card-body bg-light text-center p-4">
-                <h4 class="">Diam amet eos at no eos</h4>
-                <div class="d-flex justify-content-center mb-3">
-                  <small class="mr-3"
-                    ><i class="fa fa-user text-primary"></i> Admin</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-folder text-primary"></i> Web Design</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-comments text-primary"></i> 15</small
-                  >
-                </div>
-                <p>
-                  Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                  eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                  lorem. Tempor ipsum justo amet stet...
-                </p>
-                <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                  >Read More</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <div class="card border-0 shadow-sm mb-2">
-              <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="" />
-              <div class="card-body bg-light text-center p-4">
-                <h4 class="">Diam amet eos at no eos</h4>
-                <div class="d-flex justify-content-center mb-3">
-                  <small class="mr-3"
-                    ><i class="fa fa-user text-primary"></i> Admin</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-folder text-primary"></i> Web Design</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-comments text-primary"></i> 15</small
-                  >
-                </div>
-                <p>
-                  Sed kasd sea sed at elitr sed ipsum justo, sit nonumy diam
-                  eirmod, duo et sed sit eirmod kasd clita tempor dolor stet
-                  lorem. Tempor ipsum justo amet stet...
-                </p>
-                <a href="" class="btn btn-primary px-4 mx-auto my-2"
-                  >Read More</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Blog Start -->
+  <div class="container-fluid pt-5">
+    <div class="container">
+      <div class="text-center pb-2">
+        <p class="section-title px-5">
+          <span class="px-2">Duyurular</span>
+        </p>
+        <h1 class="mb-4">Son Paylaşılan Duyurular</h1>
+      </div>
+      <div class="row pb-3">
+        <!-- Announcements will be inserted here by JavaScript -->
+      </div>
+      <div class="text-center pt-4">
+        <button id="loadAllBtn" href="Announcement.html" class="btn btn-primary">Tüm Duyuruları Göster</button>
       </div>
     </div>
-    <!-- Blog End -->
+  </div>
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary p-3 back-to-top"
-      ><i class="fa fa-angle-double-up"></i
-    ></a>
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-    <!-- JavaScript Libraries -->
+  <!-- JavaScript Libraries -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <div id="footer-container"></div>
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+  <div id="footer-container"></div>
 
-  </body>
+</body>
+
 </html>
