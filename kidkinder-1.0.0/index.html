@@ -522,7 +522,7 @@
 
     async function fetchTestimonials() {
       try {
-        const response = await fetch('/api/v1/comment/all'); // URL güncellendi
+        const response = await fetch('/v1/comment/all'); // URL güncellendi
         const testimonials = await response.json();
 
         const carouselInner = document.getElementById('carousel-inner');
@@ -580,7 +580,7 @@
       };
 
       try {
-        const response = await fetch('/api/v1/comment/save', { // URL güncellendi
+        const response = await fetch('/v1/comment/save', { // URL güncellendi
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -601,7 +601,7 @@
 
     function loadTopAnnouncements() {
       $.ajax({
-        url: '/api/v1/announcements/top3', // URL güncellendi
+        url: '/v1/announcements/top3', // URL güncellendi
         type: 'GET',
         success: function (data) {
           let announcementsContainer = $('.row.pb-3');
