@@ -287,8 +287,9 @@
             <div class="card-body text-center">
               <h4 class="card-title">Boyama sınıfı</h4>
               <p class="card-text">
-                cukların yaratıcılıklarını keşfetmeleri ve kendilerini ifade etmeleri 
-                için harika bir fırsat sunan Boyama Sınıfımız, miniklerimizin sanatsal yeteneklerini geliştirmelerine yardımcı olur. 
+                cukların yaratıcılıklarını keşfetmeleri ve kendilerini ifade etmeleri
+                için harika bir fırsat sunan Boyama Sınıfımız, miniklerimizin sanatsal yeteneklerini geliştirmelerine
+                yardımcı olur.
                 Kreşimizde, çocuklar için renkli ve ilham verici bir ortam hazırladık.
               </p>
             </div>
@@ -311,8 +312,8 @@
               <h4 class="card-title">Dil Öğrenme</h4>
               <p class="card-text">
                 Dil öğrenme, çocukların zihinsel ve sosyal gelişimleri için son derece önemlidir.
-                 Kreşimizde, çocuklarımıza dil becerilerini geliştirebilmeleri
-                  için özel olarak tasarlanmış bir eğitim ortamı sunuyoruz.
+                Kreşimizde, çocuklarımıza dil becerilerini geliştirebilmeleri
+                için özel olarak tasarlanmış bir eğitim ortamı sunuyoruz.
               </p>
             </div>
             <div class="card-footer bg-transparent py-4 px-5">
@@ -322,9 +323,9 @@
                 </div>
                 <div class="col-6 py-1">3 - 6 Yaş</div>
               </div>
-              
-              
-              
+
+
+
             </div>
             <a href="" class="btn btn-primary px-4 mx-auto mb-4">Şimdi Katılın</a>
           </div>
@@ -335,10 +336,10 @@
             <div class="card-body text-center">
               <h4 class="card-title">Temel Bilim</h4>
               <p class="card-text">
-                Bilim, çocukların merakını uyandıran ve dünyayı keşfetmelerine yardımcı olan büyüleyici bir alandır. 
+                Bilim, çocukların merakını uyandıran ve dünyayı keşfetmelerine yardımcı olan büyüleyici bir alandır.
                 Kreşimizde, çocuklarımıza bilimi sevdirmek
-                 ve onların keşif ruhunu desteklemek için özel
-                  olarak tasarlanmış Temel Bilim Sınıfı sunuyoruz.
+                ve onların keşif ruhunu desteklemek için özel
+                olarak tasarlanmış Temel Bilim Sınıfı sunuyoruz.
               </p>
             </div>
             <div class="card-footer bg-transparent py-4 px-5">
@@ -348,7 +349,7 @@
                 </div>
                 <div class="col-6 py-1">3 - 6 Yaş</div>
               </div>
-              
+
             </div>
             <a href="" class="btn btn-primary px-4 mx-auto mb-4">Şimdi Katılın</a>
           </div>
@@ -491,7 +492,7 @@
                 <option value="Ziyaretçi">Ziyaretçi</option>
               </select>
             </div>
-      
+
             <div class="form-group">
               <label for="testimonialText">Yorum</label>
               <textarea class="form-control" id="testimonialText" rows="3" required></textarea>
@@ -500,7 +501,7 @@
               <label for="parentName">Kullanıcı Adı</label>
               <input type="text" class="form-control" id="parentName" required />
             </div>
-      
+
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
@@ -515,13 +516,13 @@
   <script>
 
 
-
     document.addEventListener('DOMContentLoaded', function () {
       fetchTestimonials();
     });
+
     async function fetchTestimonials() {
       try {
-        const response = await fetch('http://localhost:8080/v1/comment/all');
+        const response = await fetch('/api/v1/comment/all'); // URL güncellendi
         const testimonials = await response.json();
 
         const carouselInner = document.getElementById('carousel-inner');
@@ -541,19 +542,19 @@
             testimonialItem.classList.add('testimonial-item', 'col-md-3');
 
             testimonialItem.innerHTML = `
-                    <div class="card bg-light shadow-sm rounded mb-4 p-4">
-                        <div class="card-body">
-                            <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                            <p class="card-text">${testimonial.content}</p>
-                        </div>
-                        <div class="d-flex align-items-center mt-4">
-                            <div>
-                                <h5>${testimonial.authorName}</h5>
-                                <div class="author-info">${testimonial.title}</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+          <div class="card bg-light shadow-sm rounded mb-4 p-4">
+            <div class="card-body">
+              <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+              <p class="card-text">${testimonial.content}</p>
+            </div>
+            <div class="d-flex align-items-center mt-4">
+              <div>
+                <h5>${testimonial.authorName}</h5>
+                <div class="author-info">${testimonial.title}</div>
+              </div>
+            </div>
+          </div>
+        `;
             row.appendChild(testimonialItem);
           }
 
@@ -579,7 +580,7 @@
       };
 
       try {
-        const response = await fetch('http://localhost:8080/v1/comment/save', {
+        const response = await fetch('/api/v1/comment/save', { // URL güncellendi
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -600,7 +601,7 @@
 
     function loadTopAnnouncements() {
       $.ajax({
-        url: 'http://localhost:8080/v1/announcements/top3',
+        url: '/api/v1/announcements/top3', // URL güncellendi
         type: 'GET',
         success: function (data) {
           let announcementsContainer = $('.row.pb-3');
@@ -608,16 +609,16 @@
 
           data.forEach(announcement => {
             let announcementItem = `
-                        <div class="col-lg-4 mb-4">
-                            <div class="card border-0 shadow-sm mb-2">
-                                <img class="card-img-top mb-2" src="${announcement.imageUrl}" alt="Announcement Image" />
-                                <div class="card-body bg-light text-center p-4">
-                                    <h4 class="">${announcement.title}</h4>
-                                    <p>${announcement.description}</p>
-                                    <a href="announcement-detail.html?id=${announcement.id}" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
-                                </div>
-                            </div>
-                        </div>`;
+          <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-sm mb-2">
+              <img class="card-img-top mb-2" src="${announcement.imageUrl}" alt="Announcement Image" />
+              <div class="card-body bg-light text-center p-4">
+                <h4 class="">${announcement.title}</h4>
+                <p>${announcement.description}</p>
+                <a href="announcement-detail.html?id=${announcement.id}" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+              </div>
+            </div>
+          </div>`;
             announcementsContainer.append(announcementItem);
           });
         },
@@ -626,6 +627,7 @@
         }
       });
     }
+
   </script>
 
 
@@ -648,7 +650,7 @@
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
-  
+
 
 </body>
 
