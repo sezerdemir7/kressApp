@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcement Details</title>
     
-    
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
 
@@ -35,29 +33,24 @@
             height: auto;
         }
     </style>
-    <script>
-        $(document).ready(function() {
-            $("#navbar-container").load("Navbar.html");
-            
-        });
-    </script>
 </head>
 <body>
-
-     <!-- Navbar Start -->
-     
+    <!-- Navbar Start -->
+    <div id="navbar-container"></div>
     <!-- Navbar End -->
+
     <div id="announcement-detail" class="container">
         <!-- Detailed announcement content will be inserted here -->
     </div>
-    <div id="navbar-container"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
+            $("#navbar-container").load("Navbar.html");
+
             const urlParams = new URLSearchParams(window.location.search);
             const announcementId = urlParams.get('id');
-            const apiBaseUrl = '/v1/announcements'; // Replace with your actual API base URL
+            const apiBaseUrl = '/v1/announcements'; 
 
             if (announcementId) {
                 $.ajax({
@@ -67,7 +60,7 @@
                         let detailContainer = $('#announcement-detail');
                         let detailContent = `
                             <div class="card">
-                            <img class="card-img-top" src="data:image/jpeg;base64,${data.imageBase64}" alt="Announcement Image">
+                                <img class="card-img-top" src="data:image/jpeg;base64,${data.imageBase64}" alt="Announcement Image">
                                 <div class="card-body">
                                     <h2 class="card-title">${data.title}</h2>
                                     <p class="card-text">${data.description}</p>
@@ -77,6 +70,7 @@
                         detailContainer.append(detailContent);
                     },
                     error: function(error) {
+                        $('#announcement-detail').text('Announcement details could not be loaded.');
                         console.log('Announcement details could not be loaded:', error);
                     }
                 });
