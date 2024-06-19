@@ -121,7 +121,7 @@
                         const announcementHtml = `
                             <div class="col-md-4 mb-4">
                                 <div class="card">
-                                    <img src="${announcement.imageUrl}" class="card-img-top" alt="${announcement.title}">
+                            <img class="card-img-top" src="data:image/jpeg;base64,${announcement.imageBase64}" alt="Announcement Image">
                                     <div class="card-body">
                                         <h5 class="card-title">${announcement.title}</h5>
                                         <p class="card-text">${announcement.description}</p>

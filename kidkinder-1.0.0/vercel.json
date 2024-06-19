@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/v1/:path*", "destination": "https://kresapp-3.onrender.com/v1/:path*" }
+    { "source": "/v1/:path*", "destination": "https://kresapp-y1mh.onrender.com/v1/:path*" }
   ]
 }
