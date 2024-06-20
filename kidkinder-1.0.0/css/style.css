@@ -379,36 +379,6 @@ h1, .h1 {
 }
 <style>
 
-/* Genel kart stil ayarları */
-.card-text {
-position: relative;
-overflow: hidden;
-}
-
-.full-text {
-display: none;
-white-space: normal; /* Metnin çok satırlı olmasına izin ver */
-overflow: hidden;
-text-overflow: ellipsis;
-}
-
-.short-text {
-display: block;
-max-height: 60px; /* Gerekli satır yüksekliğine göre ayarlayın */
-overflow: hidden;
-white-space: normal;
-transition: all 0.3s ease;
-}
-
-.card-body:hover .short-text {
-max-height: 500px; /* Tam metni gösterecek şekilde ayarlayın */
-overflow: visible;
-}
-
-.card-body:hover .full-text {
-display: block;
-}
-
 
 #testimonial-carousel {
 /* Sadece testimonial-carousel ID'sine sahip olan carousel'in margin ve padding'ini sıfırlar */
