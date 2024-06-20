@@ -94,6 +94,30 @@
             </div>
         </div>
 
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Yeni Fotoğraf Ekle</h5>
+                <form id="photo-form">
+                    <div class="form-group">
+                        <label for="photo">Fotoğraf</label>
+                        <input type="file" class="form-control-file" id="photo" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Fotoğraf Ekle</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Fotoğrafları Listeleme -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mevcut Fotoğraflar</h5>
+                <div class="row" id="photosContainer">
+                    <!-- Fotoğraflar buraya eklenecek -->
+                </div>
+            </div>
+        </div>
+        
+
         <!-- Yorumlar -->
         <div class="card mt-4">
             <div class="card-body">
@@ -271,6 +295,98 @@
         loadAnnouncements();
         loadComments(); // Load comments initially
       });
+
+      $(document).ready(function() {
+    const apiBaseUrl = '/v1';
+
+    function loadPhotos() {
+        $.ajax({
+            url: `${apiBaseUrl}/photos/all`, // Fotoğrafları getirmek için API endpoint
+            type: 'GET',
+            success: function(data) {
+                $('#photosContainer').empty();
+                data.forEach(function(photo) {
+                    const photoHtml = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/jpeg;base64,${photo.imageBase64}" alt="Photo">
+                                <div class="card-body">
+                                    <button class="btn btn-danger btn-sm delete-photo-button" data-id="${photo.id}">Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('#photosContainer').append(photoHtml);
+                });
+
+                $('.delete-photo-button').click(function() {
+                    const id = $(this).data('id');
+                    deletePhoto(id);
+                });
+            },
+            error: function(error) {
+                console.log('Fotoğraflar yüklenemedi:', error);
+            }
+        });
+    }
+
+    function deletePhoto(id) {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('JWT token bulunamadı. Lütfen tekrar giriş yapın.');
+            return;
+        }
+
+        $.ajax({
+            url: `${apiBaseUrl}/photos/${id}`,
+            type: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            success: function(result) {
+                alert('Fotoğraf başarıyla silindi!');
+                loadPhotos(); // Fotoğrafları yeniden yükle
+            },
+            error: function(error) {
+                alert('Silme işlemi sırasında hata oluştu: ' + error.responseText);
+            }
+        });
+    }
+
+    $('#photo-form').on('submit', function(event) {
+        event.preventDefault();
+        const photoFile = $('#photo')[0].files[0];
+        const formData = new FormData();
+        formData.append('file', photoFile);
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('JWT token bulunamadı. Lütfen tekrar giriş yapın.');
+            return;
+        }
+
+        $.ajax({
+            url: `${apiBaseUrl}/photos/upload`,
+            type: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                alert('Fotoğraf başarıyla yüklendi!');
+                $('#photo-form')[0].reset();
+                loadPhotos();
+            },
+            error: function(error) {
+                alert('Hata oluştu: ' + error.responseText);
+            }
+        });
+    });
+
+    loadPhotos(); // Sayfa yüklendiğinde mevcut fotoğrafları yükle
+});
     </script>
 </body>
 </html>
