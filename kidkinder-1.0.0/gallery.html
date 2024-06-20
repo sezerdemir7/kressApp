@@ -136,9 +136,14 @@
             </p>
             <h1 class="mb-4">Our Kids School Gallery</h1>
           </div>
-          <div class="row portfolio-container">
-            <!-- Resimler buraya yüklenecek -->
-          </div>
+          <div class="card">
+            <div class="card-body">
+               
+                <div class="row" id="photosContainer">
+                    <!-- Fotoğraflar buraya eklenecek -->
+                </div>
+            </div>
+        </div>
         </div>
       </div>
       <!-- Gallery End -->
@@ -169,27 +174,35 @@
         const apiBaseUrl = '/v1/photo';
 
         function loadPhotos() {
-          $.ajax({
-            url: `${apiBaseUrl}/all`,
+        $.ajax({
+            url: `${apiBaseUrl}/all`, // Fotoğrafları getirmek için API endpoint
             type: 'GET',
             success: function(data) {
-              $('.portfolio-container').empty();
-              data.forEach(function(photo) {
-                const photoHtml = `
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img class="card-img-top" src="data:image/jpeg;base64,${photo.imageBase64}" alt="Photo">
-                    </div>
-                  </div>
-                `;
-                $('.portfolio-container').append(photoHtml);
-              });
+                $('#photosContainer').empty();
+                data.forEach(function(photo) {
+                    const photoHtml = `
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/jpeg;base64,${photo.imageBase64}" alt="Photo">
+                                <div class="card-body">
+                                    <button class="btn btn-danger btn-sm delete-photo-button" data-id="${photo.id}">Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('#photosContainer').append(photoHtml);
+                });
+
+                $('.delete-photo-button').click(function() {
+                    const id = $(this).data('id');
+                    deletePhoto(id);
+                });
             },
             error: function(error) {
-              console.error('Fotoğraflar yüklenemedi:', error);
+                console.log('Fotoğraflar yüklenemedi:', error);
             }
-          });
-        }
+        });
+    }
 
         loadPhotos(); // Sayfa yüklendiğinde mevcut fotoğrafları yükle
       });
