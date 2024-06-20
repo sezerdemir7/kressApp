@@ -130,26 +130,31 @@
     </div>
     <!-- Header End -->
 
-    <!-- Gallery Start -->
-    <div class="container-fluid pt-5 pb-3">
-      <div class="container">
-        <div class="text-center pb-2">
-          <p class="section-title px-5">
-            <span class="px-2">Our Gallery</span>
-          </p>
-          <h1 class="mb-4">Our Kids School Gallery</h1>
-        </div>
-        <div class="card">
-          <div class="card-body">
-
-            <div class="row" id="photosContainer">
-              <!-- Fotoğraflar buraya eklenecek -->
-            </div>
-          </div>
-        </div>
-      </div>
+    
+<!-- Dinamik galeri bölümü -->
+<div class="container-fluid pt-5 pb-3">
+  <div class="container">
+    <div class="text-center pb-2">
+      <p class="section-title px-5">
+        <span class="px-2">Our Gallery</span>
+      </p>
+      <h1 class="mb-4">Our Kids School Gallery</h1>
     </div>
-    <!-- Gallery End -->
+    <div class="row" id="dynamicGallery">
+      <!-- Resimler buraya dinamik olarak eklenecek -->
+    </div>
+    <div class="row" id="photosContainer">
+      <!-- Fotoğraflar buraya eklenecek -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    </div>
+
   </div>
 
   <div id="footer-container"></div>
@@ -171,44 +176,143 @@
 
   <!-- API'den Resimleri Getirme ve Gösterme -->
   <script>
-    $(document).ready(function () {
-      const apiBaseUrl = '/v1/photo';
 
-      function loadPhotos() {
-        $.ajax({
-          url: `${apiBaseUrl}/all`, // Fotoğrafları getirmek için API endpoint
-          type: 'GET',
-          success: function (data) {
-            $('#photosContainer').empty();
-            data.forEach(function (photo) {
+// Resimlerin listesi
+const photos = [
+  "photos/IMG-20240613-WA0005.jpg",
+  "photos/IMG-20240613-WA0007.jpg",
+  "photos/IMG-20240613-WA0008.jpg",
+  "photos/IMG-20240613-WA0009.jpg",
+  "photos/IMG-20240613-WA0010.jpg",
+  "photos/IMG-20240613-WA0011.jpg",
+  "photos/IMG-20240613-WA0012.jpg",
+  "photos/IMG-20240613-WA0013.jpg",
+  "photos/IMG-20240613-WA0014.jpg",
+  "photos/IMG-20240613-WA0015.jpg",
+  "photos/IMG-20240613-WA0016.jpg",
+  "photos/IMG-20240613-WA0017.jpg",
+  "photos/IMG-20240613-WA0018.jpg",
+  "photos/IMG-20240613-WA0019.jpg",
+  "photos/IMG-20240613-WA0020.jpg",
+  "photos/IMG-20240613-WA0021.jpg",
+  "photos/IMG-20240613-WA0022.jpg",
+  "photos/IMG-20240613-WA0023.jpg",
+  "photos/IMG-20240613-WA0024.jpg",
+  "photos/IMG-20240613-WA0025.jpg",
+  "photos/IMG-20240613-WA0026.jpg",
+  "photos/IMG-20240613-WA0027.jpg",
+  "photos/IMG-20240613-WA0028.jpg",
+  "photos/IMG-20240613-WA0029.jpg",
+  "photos/IMG-20240613-WA0030.jpg",
+  "photos/IMG-20240613-WA0031.jpg",
+  "photos/IMG-20240613-WA0032.jpg",
+  "photos/IMG-20240613-WA0033.jpg",
+  "photos/IMG-20240613-WA0034.jpg",
+  "photos/IMG-20240613-WA0035.jpg",
+  "photos/IMG-20240613-WA0036.jpg",
+  "photos/IMG-20240613-WA0037.jpg"
+];
+
+
+// Dinamik galeriye resimleri ekleme işlevi
+function populateGallery() {
+  const galleryContainer = document.getElementById("dynamicGallery");
+
+  photos.forEach((photo, index) => {
+    const columnClass = index % 3 === 0 ? "first" : index % 3 === 1 ? "second" : "third";
+
+    const galleryItem = `
+      <div class="col-lg-4 col-md-6 mb-4 portfolio-item ${columnClass}">
+        <div class="position-relative overflow-hidden mb-2">
+          <img class="img-fluid w-100" src="${photo}" alt="Gallery Image" />
+          <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+            <a href="${photo}" data-lightbox="portfolio">
+              <i class="fa fa-plus text-white" style="font-size: 60px"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    galleryContainer.innerHTML += galleryItem;
+  });
+}
+
+// Sayfa yüklendiğinde galeriyi doldur
+document.addEventListener("DOMContentLoaded", function() {
+  populateGallery();
+});
+
+
+
+    $(document).ready(function () {
+  const apiBaseUrl = '/v1/photo';
+  const photosFolderUrl = '/photos';
+
+  function loadPhotos() {
+    // Function to load photos from /photos folder
+    function loadPhotosFromFolder() {
+      $.ajax({
+        url: photosFolderUrl,
+        success: function (folderData) {
+          $(folderData).find('a').attr('href', function (index, fileName) {
+            
               const photoHtml = `
-              <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
+                <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
                   <div class="position-relative overflow-hidden mb-2">
-                    <img class="img-fluid" src="data:image/jpeg;base64,${photo.imageBase64}" alt="" />
+                    <img class="img-fluid" src="${photosFolderUrl}/${fileName}" alt="${fileName}" />
                     <div class="portfolio-btn">
-                      <a href="data:image/jpeg;base64,${photo.imageBase64}" data-lightbox="portfolio">
+                      <a href="${photosFolderUrl}/${fileName}" data-lightbox="portfolio">
                         <i class="fa fa-plus text-white" style="font-size: 60px"></i>
                       </a>
                     </div>
                   </div>
                 </div>
-
-                        
-                    `;
+              `;
               $('#photosContainer').append(photoHtml);
-            });
+            
+          });
+        },
+        error: function (error) {
+          console.log('Error loading photos from /photos folder:', error);
+        }
+      });
+    }
 
+    // Load photos from /photos folder first
+    loadPhotosFromFolder();
 
-
-          },
-          error: function (error) {
-            console.log('Fotoğraflar yüklenemedi:', error);
-          }
+    // Then load photos from API
+    $.ajax({
+      url: `${apiBaseUrl}/all`,
+      type: 'GET',
+      success: function (apiData) {
+        // Append API photos after folder photos
+        apiData.forEach(function (photo) {
+          const photoHtml = `
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
+              <div class="position-relative overflow-hidden mb-2">
+                <img class="img-fluid" src="data:image/jpeg;base64,${photo.imageBase64}" alt="" />
+                <div class="portfolio-btn">
+                  <a href="data:image/jpeg;base64,${photo.imageBase64}" data-lightbox="portfolio">
+                    <i class="fa fa-plus text-white" style="font-size: 60px"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+          $('#photosContainer').append(photoHtml);
         });
+      },
+      error: function (error) {
+        console.log('Error loading photos from API:', error);
       }
-
-      loadPhotos(); // Sayfa yüklendiğinde mevcut fotoğrafları yükle
     });
+  }
+
+  loadPhotos(); // Call the function to load photos on page load
+});
+
   </script>
 
   <!-- Template Javascript -->
