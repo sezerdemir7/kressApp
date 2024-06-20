@@ -40,11 +40,18 @@
       });
     </script>
     <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
       .portfolio-item img {
         object-fit: cover;
         height: 250px;
         width: 100%;
       }
+
       .portfolio-btn {
         position: absolute;
         top: 0;
@@ -55,16 +62,31 @@
         opacity: 0;
         transition: opacity 0.3s;
       }
+
       .portfolio-item:hover .portfolio-btn {
         opacity: 1;
       }
+
       @media (max-width: 767.98px) {
         .portfolio-item img {
           height: 150px;
         }
       }
+
       .portfolio-container {
         margin-bottom: 50px; /* Footer'dan uzaklaşmak için margin ekledik */
+        clear: both; /* Float temizleme */
+      }
+
+      #footer-container {
+        clear: both; /* Float temizleme */
+        padding: 20px 0; /* Yeterli boşluk bırakmak için padding ekleyin */
+        background-color: #f8f9fa; /* Arka plan rengini belirleyin */
+        width: 100%;
+      }
+
+      .container-fluid {
+        padding: 0 15px; /* Varsayılan padding */
       }
     </style>
   </head>
