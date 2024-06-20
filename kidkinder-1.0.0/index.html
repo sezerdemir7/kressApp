@@ -44,6 +44,47 @@
       });
     });
   </script>
+
+
+<style>
+  .class-card {
+    border: 0;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 2rem;
+  }
+
+  .class-card img {
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+  .class-card .card-body {
+    text-align: center;
+  }
+
+  .class-card .card-footer {
+    background-color: transparent;
+    padding: 1rem 1.25rem;
+  }
+
+  .class-card .card-footer .row {
+    margin: 0;
+  }
+
+  .class-card .card-footer .row .col-6 {
+    padding: 0.25rem 0;
+  }
+
+  .class-card .card-footer .row .col-6.text-right {
+    padding-right: 1rem;
+    border-right: 1px solid #e9ecef;
+  }
+
+  .class-card .btn-primary {
+    margin-top: 1rem;
+  }
+</style>
 </head>
 
 <body>
@@ -209,7 +250,6 @@
   </div>
 
 
-
   <!-- Class Start -->
   <div class="container-fluid pt-5">
     <div class="container">
@@ -220,34 +260,33 @@
         <h1 class="mb-4">Çocuklar için Sınıflarımız</h1>
       </div>
       <div class="row">
-        <div class="col-lg-4 mb-5">
-          <div class="card border-0 bg-light shadow-sm pb-2">
-            <img class="card-img-top mb-2" src="photos\WhatsApp Image 2024-06-13 at 13.25.14_2b418be7.jpg" alt="" />
-            <div class="card-body text-center">
+        <div id="class1" class="col-lg-4 mb-5">
+          <div class="card class-card">
+            <img class="card-img-top mb-2" src="photos/IMG-20240613-WA0016.jpg" alt="Boyama sınıfı" />
+            <div class="card-body">
               <h4 class="card-title">Boyama sınıfı</h4>
               <p class="card-text">
-                cukların yaratıcılıklarını keşfetmeleri ve kendilerini ifade etmeleri
+                Çocukların yaratıcılıklarını keşfetmeleri ve kendilerini ifade etmeleri
                 için harika bir fırsat sunan Boyama Sınıfımız, miniklerimizin sanatsal yeteneklerini geliştirmelerine
                 yardımcı olur.
                 Kreşimizde, çocuklar için renkli ve ilham verici bir ortam hazırladık.
               </p>
             </div>
-            <div class="card-footer bg-transparent py-4 px-5">
+            <div class="card-footer">
               <div class="row border-bottom">
                 <div class="col-6 py-1 text-right border-right">
-                  <strong>yaş aralığı</strong>
+                  <strong>Yaş aralığı</strong>
                 </div>
                 <div class="col-6 py-1">3 - 6 Yaş</div>
               </div>
-
             </div>
             <a href="" class="btn btn-primary px-4 mx-auto mb-4">Şimdi Katılın</a>
           </div>
         </div>
-        <div class="col-lg-4 mb-5">
-          <div class="card border-0 bg-light shadow-sm pb-2">
-            <img class="card-img-top mb-2" src="photos\WhatsApp Image 2024-06-13 at 13.25.14_d947fd68.jpg" alt="" />
-            <div class="card-body text-center">
+        <div id="class2" class="col-lg-4 mb-5">
+          <div class="card class-card">
+            <img class="card-img-top mb-2" src="photos/IMG-20240613-WA0036.jpg" alt="Dil Öğrenme" />
+            <div class="card-body">
               <h4 class="card-title">Dil Öğrenme</h4>
               <p class="card-text">
                 Dil öğrenme, çocukların zihinsel ve sosyal gelişimleri için son derece önemlidir.
@@ -255,24 +294,21 @@
                 için özel olarak tasarlanmış bir eğitim ortamı sunuyoruz.
               </p>
             </div>
-            <div class="card-footer bg-transparent py-4 px-5">
+            <div class="card-footer">
               <div class="row border-bottom">
                 <div class="col-6 py-1 text-right border-right">
                   <strong>Yaş aralığı</strong>
                 </div>
                 <div class="col-6 py-1">3 - 6 Yaş</div>
               </div>
-
-
-
             </div>
             <a href="" class="btn btn-primary px-4 mx-auto mb-4">Şimdi Katılın</a>
           </div>
         </div>
-        <div class="col-lg-4 mb-5">
-          <div class="card border-0 bg-light shadow-sm pb-2">
-            <img class="card-img-top mb-2" src="img/class-3.jpg" alt="" />
-            <div class="card-body text-center">
+        <div id="class3" class="col-lg-4 mb-5">
+          <div class="card class-card">
+            <img class="card-img-top mb-2" src="photos/IMG-20240613-WA0037.jpg" alt="Temel Bilim" />
+            <div class="card-body">
               <h4 class="card-title">Temel Bilim</h4>
               <p class="card-text">
                 Bilim, çocukların merakını uyandıran ve dünyayı keşfetmelerine yardımcı olan büyüleyici bir alandır.
@@ -281,14 +317,13 @@
                 olarak tasarlanmış Temel Bilim Sınıfı sunuyoruz.
               </p>
             </div>
-            <div class="card-footer bg-transparent py-4 px-5">
+            <div class="card-footer">
               <div class="row border-bottom">
                 <div class="col-6 py-1 text-right border-right">
                   <strong>Yaş aralığı</strong>
                 </div>
                 <div class="col-6 py-1">3 - 6 Yaş</div>
               </div>
-
             </div>
             <a href="" class="btn btn-primary px-4 mx-auto mb-4">Şimdi Katılın</a>
           </div>
