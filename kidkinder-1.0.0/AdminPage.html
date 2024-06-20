@@ -338,7 +338,7 @@
         }
 
         $.ajax({
-            url: `${apiBaseUrl}/photos/${id}`,
+            url: `${apiBaseUrl}/photo/${id}`,
             type: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -366,7 +366,7 @@
         }
 
         $.ajax({
-            url: `${apiBaseUrl}/photos/upload`,
+            url: `${apiBaseUrl}/photo/upload`,
             type: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
