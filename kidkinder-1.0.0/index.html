@@ -552,7 +552,7 @@
         content: content,
         authorName: authorName,
       };
-
+      console.log(title)
       try {
         const response = await fetch('/v1/comment/save', { // URL güncellendi
           method: 'POST',
