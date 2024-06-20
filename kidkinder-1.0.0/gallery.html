@@ -44,6 +44,8 @@
         margin: 0;
         padding: 0;
         height: 100%;
+        display: flex;
+        flex-direction: column;
       }
 
       .portfolio-item img {
@@ -78,6 +80,7 @@
         clear: both; /* Float temizleme */
         display: flex;
         flex-wrap: wrap;
+        flex-grow: 1;
       }
 
       #footer-container {
@@ -89,6 +92,7 @@
 
       .container-fluid {
         padding: 0 15px; /* Varsayılan padding */
+        flex-grow: 1; /* Sayfanın kalanını doldur */
       }
 
       .card-img-top {
@@ -96,43 +100,49 @@
         height: 250px; /* Sabit yükseklik */
         object-fit: cover; /* Resmi kesmeden sığdır */
       }
+
+      .content-wrapper {
+        flex: 1 0 auto; /* İçeriğin büyümesine izin verir */
+      }
     </style>
   </head>
 
   <body>
     <div id="navbar-container"></div>
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary mb-5">
-      <div
-        class="d-flex flex-column align-items-center justify-content-center"
-        style="min-height: 400px"
-      >
-        <h3 class="display-3 font-weight-bold text-white">Galeri</h3>
-        <div class="d-inline-flex text-white">
-          <p class="m-0"><a class="text-white" href="">Ana</a></p>
-          <p class="m-0 px-2">/</p>
-          <p class="m-0">Galeri</p>
+    <div class="content-wrapper">
+      <!-- Header Start -->
+      <div class="container-fluid bg-primary mb-5">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+          style="min-height: 400px"
+        >
+          <h3 class="display-3 font-weight-bold text-white">Galeri</h3>
+          <div class="d-inline-flex text-white">
+            <p class="m-0"><a class="text-white" href="">Ana</a></p>
+            <p class="m-0 px-2">/</p>
+            <p class="m-0">Galeri</p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Header End -->
+      <!-- Header End -->
 
-    <!-- Gallery Start -->
-    <div class="container-fluid pt-5 pb-3">
-      <div class="container">
-        <div class="text-center pb-2">
-          <p class="section-title px-5">
-            <span class="px-2">Our Gallery</span>
-          </p>
-          <h1 class="mb-4">Our Kids School Gallery</h1>
-        </div>
-        <div class="row portfolio-container">
-          <!-- Resimler buraya yüklenecek -->
+      <!-- Gallery Start -->
+      <div class="container-fluid pt-5 pb-3">
+        <div class="container">
+          <div class="text-center pb-2">
+            <p class="section-title px-5">
+              <span class="px-2">Our Gallery</span>
+            </p>
+            <h1 class="mb-4">Our Kids School Gallery</h1>
+          </div>
+          <div class="row portfolio-container">
+            <!-- Resimler buraya yüklenecek -->
+          </div>
         </div>
       </div>
+      <!-- Gallery End -->
     </div>
-    <!-- Gallery End -->
 
     <div id="footer-container"></div>
 
