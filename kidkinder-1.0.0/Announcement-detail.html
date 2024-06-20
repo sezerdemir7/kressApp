@@ -29,7 +29,7 @@
     <link href="css/style.css" rel="stylesheet" />
     <style>
         .card-img-top {
-            max-width: 100%;
+            max-width: 80%;
             height: auto;
             max-height: 300px; /* Örnek bir max-height değeri */
         }
@@ -47,38 +47,52 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Load Navbar
             $("#navbar-container").load("Navbar.html");
 
+            // Get Announcement ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             const announcementId = urlParams.get('id');
-            const apiBaseUrl = '/v1/announcements'; 
+            const apiBaseUrl = '/v1/announcements'; // Replace with your actual API base URL
 
-            if (announcementId) {
-                $.ajax({
-                    url: `${apiBaseUrl}/getById/${announcementId}`,
-                    type: 'GET',
-                    success: function(data) {
-                        let detailContainer = $('#announcement-detail');
-                        let detailContent = `
-                            <div class="card">
-                                <img class="card-img-top" src="data:image/jpeg;base64,${data.imageBase64}" alt="Announcement Image" style="max-height: 300px;">
-                                <div class="card-body">
-                                    <h2 class="card-title">${data.title}</h2>
-                                    <p class="card-text">${data.description}</p>
-                                    <p class="card-text"><small class="text-muted">Oluşturulma Tarihi: ${new Date(data.createdAt).toLocaleString()}</small></p>
-                                </div>
-                            </div>`;
-                        detailContainer.append(detailContent);
-                    },
-                    error: function(error) {
-                        $('#announcement-detail').text('Announcement details could not be loaded.');
-                        console.log('Announcement details could not be loaded:', error);
-                    }
-                });
-            } else {
-                $('#announcement-detail').text('No announcement ID provided.');
+            // Function to load announcement details
+            function loadAnnouncementDetails() {
+                if (announcementId) {
+                    $.ajax({
+                        url: `${apiBaseUrl}/getById/${announcementId}`,
+                        type: 'GET',
+                        success: function(data) {
+                            // Construct HTML for announcement detail
+                            let detailContainer = $('#announcement-detail');
+                            let createdAt = new Date(data.createdAt); // Convert createdAt to Date object
+
+                            let detailContent = `
+                                <div class="card mb-3">
+                                    <img class="card-img-top" src="data:image/jpeg;base64,${data.imageBase64}" alt="Announcement Image">
+                                    <div class="card-body">
+                                        <h2 class="card-title">${data.title}</h2>
+                                        <p class="card-text">${data.description}</p>
+                                        <p class="card-text"><small class="text-muted">Oluşturulma Tarihi: ${createdAt.toLocaleString()}</small></p>
+                                    </div>
+                                </div>`;
+                            detailContainer.html(detailContent);
+                        },
+                        error: function(error) {
+                            // Display error message if announcement details could not be loaded
+                            $('#announcement-detail').html('<p class="text-danger">Duyuru detayları yüklenemedi.</p>');
+                            console.log('Duyuru detayları yüklenemedi:', error);
+                        }
+                    });
+                } else {
+                    // Display message if no announcement ID provided
+                    $('#announcement-detail').html('<p class="text-warning">Duyuru ID bilgisi sağlanmadı.</p>');
+                }
             }
+
+            // Call function to load announcement details when document is ready
+            loadAnnouncementDetails();
         });
+    </script>
     </script>
 </body>
 </html>
