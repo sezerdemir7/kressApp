@@ -38,12 +38,36 @@
           $("#navbar-container").load("Navbar.html");
           $("#footer-container").load("Footer.html");
       });
-  </script>
+    </script>
+    <style>
+      .portfolio-item img {
+        object-fit: cover;
+        height: 250px;
+        width: 100%;
+      }
+      .portfolio-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 123, 255, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .portfolio-item:hover .portfolio-btn {
+        opacity: 1;
+      }
+      @media (max-width: 767.98px) {
+        .portfolio-item img {
+          height: 150px;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <div id="navbar-container"></div>
-
 
     <!-- Header Start -->
     <div class="container-fluid bg-primary mb-5">
@@ -70,11 +94,8 @@
           </p>
           <h1 class="mb-4">Our Kids School Gallery</h1>
         </div>
-        <div class="row">
-          
-        </div>
         <div class="row portfolio-container">
-           
+          <!-- Resimler buraya yüklenecek -->
         </div>
       </div>
     </div>
@@ -98,35 +119,44 @@
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
+    
+    <!-- API'den Resimleri Getirme ve Gösterme -->
     <script>
       $(document).ready(function() {
-          // photos klasöründeki tüm .jpg resimleri getirme
+        const apiBaseUrl = '/v1/photo';
+
+        function loadPhotos() {
           $.ajax({
-              url: 'photos/',  // Klasör yolunuzu belirtin
-              success: function(data) {
-                  var images = [];
-                  $(data).find('a[href$=".jpg"]').each(function() {  // .jpg uzantılı dosyaları bulma
-                      var filePath = $(this).attr('href');
-                      images.push('<div class="col-lg-4 col-md-6 mb-4 portfolio-item">' +
-                                  '<div class="position-relative overflow-hidden mb-2">' +
-                                  '<img class="img-fluid w-100" src="photos/' + filePath + '" alt="" />' +
-                                  '<div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">' +
-                                  '<a href="photos/' + filePath + '" data-lightbox="portfolio">' +
-                                  '<i class="fa fa-plus text-white" style="font-size: 60px"></i>' +
-                                  '</a></div></div></div>');
-                  });
-                  console.log(data)
-                  // Tüm resimleri sayfada gösterme
-                  $('.portfolio-container').html(images.join(''));
-              },
-              error: function() {
-                  console.error('Fotoğraflar yüklenemedi.');
-              }
+            url: `${apiBaseUrl}/all`,
+            type: 'GET',
+            success: function(data) {
+              $('.portfolio-container').empty();
+              data.forEach(function(photo) {
+                const photoHtml = `
+                  <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
+                    <div class="position-relative overflow-hidden mb-2">
+                      <img class="img-fluid" src="data:image/jpeg;base64,${photo.imageBase64}" alt="" />
+                      <div class="portfolio-btn d-flex align-items-center justify-content-center">
+                        <a href="data:image/jpeg;base64,${photo.imageBase64}" data-lightbox="portfolio">
+                          <i class="fa fa-plus text-white" style="font-size: 60px"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                `;
+                $('.portfolio-container').append(photoHtml);
+              });
+            },
+            error: function(error) {
+              console.error('Fotoğraflar yüklenemedi:', error);
+            }
           });
+        }
+
+        loadPhotos(); // Sayfa yüklendiğinde mevcut fotoğrafları yükle
       });
-      </script>
-      
-      
+    </script>
+
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
   </body>
