@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcement Details</title>
     
+    <!-- Meta Tags -->
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
 
@@ -29,9 +30,12 @@
     <link href="css/style.css" rel="stylesheet" />
     <style>
         .card-img-top {
-            max-width: 80%;
+            max-width: 100%;
             height: auto;
             max-height: 300px; /* Örnek bir max-height değeri */
+            display: block; /* Resmin sayfaya göre ortalanması için gerekli */
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -92,7 +96,6 @@
             // Call function to load announcement details when document is ready
             loadAnnouncementDetails();
         });
-    </script>
     </script>
 </body>
 </html>
