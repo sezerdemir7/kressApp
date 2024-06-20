@@ -301,7 +301,7 @@
 
     function loadPhotos() {
         $.ajax({
-            url: `${apiBaseUrl}/photos/all`, // Fotoğrafları getirmek için API endpoint
+            url: `${apiBaseUrl}/photo/all`, // Fotoğrafları getirmek için API endpoint
             type: 'GET',
             success: function(data) {
                 $('#photosContainer').empty();
