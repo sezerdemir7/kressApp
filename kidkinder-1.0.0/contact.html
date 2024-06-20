@@ -10,7 +10,6 @@
 
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon" />
- 
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -37,10 +36,32 @@
     });
   </script>
 
+  <style>
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
 
+    .contact-info i {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
 
+    .contact-info h5 {
+      margin-bottom: 5px;
+    }
+
+    .contact-info p {
+      margin-bottom: 0;
+    }
+  </style>
 </head>
-
 
 <body>
 
@@ -69,45 +90,39 @@
         <h1 class="mb-4">Bütün sorularınız için ulaşabilirsiniz</h1>
       </div>
       <div class="row">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.683203267439!2d44.02735317580177!3d39.926105171522615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406b20e604f7e73b%3A0xc4a2314555f21b61!2zVG9ww6d1bGFyLCBFcnR1xJ9ydWwgR2F6aSBDZC4gTm86NCwgNzYwMDAgScSfZMSxciBNZXJrZXovScSfZMSxcg!5e0!3m2!1str!2str!4v1718702114816!5m2!1str!2str" 
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-         referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.683203267439!2d44.02735317580177!3d39.926105171522615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406b20e604f7e73b%3A0xc4a2314555f21b61!2zVG9ww6d1bGFyLCBFcnR1xJ9ydWwgR2F6aSBDZC4gTm86NCwgNzYwMDAgScSfZMSxciBNZXJrZXovScSfZMSxcg!5e0!3m2!1str!2str!4v1718702114816!5m2!1str!2str"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="col-lg-5 mb-5">
           <p>
-           Aşağdaki seçeneklerden bize ulaşabilirsiniz.
+            Aşağdaki seçeneklerden bize ulaşabilirsiniz.
           </p>
-          <div class="d-flex">
-            <i class="fa fa-map-marker-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
-              style="width: 45px; height: 45px"></i>
-            <div class="pl-3">
+          <div class="contact-info">
+            <i class="fa fa-map-marker-alt"></i>
+            <div>
               <h5>Adres</h5>
               <p>Topçular Mahallesi, Ertuğrul Gazi Caddesi, No: 4, Iğdır/Merkez</p>
             </div>
           </div>
-          <div class="d-flex">
-            <i class="fa fa-envelope d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
-              style="width: 45px; height: 45px"></i>
-            <div class="pl-3">
+          <div class="contact-info">
+            <i class="fa fa-envelope"></i>
+            <div>
               <h5>Email</h5>
-              <p>iilkadim.76@gmail.com
-              </p>
+              <p>iilkadim.76@gmail.com</p>
             </div>
           </div>
-          <div class="d-flex">
-            <i class="fa fa-phone-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
-              style="width: 45px; height: 45px"></i>
-            <div class="pl-3">
+          <div class="contact-info">
+            <i class="fa fa-phone-alt"></i>
+            <div>
               <h5>Telefon</h5>
               <p>0543 762 20 20</p>
             </div>
           </div>
-          <div class="d-flex">
-            <i class="far fa-clock d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
-              style="width: 45px; height: 45px"></i>
-            <div class="pl-3">
+          <div class="contact-info">
+            <i class="far fa-clock"></i>
+            <div>
               <h5>Çalışma Saatleri</h5>
               <strong>Pazartesi - Cuma:</strong>
-              <p class="m-0">08:00 - 17:00 </p>
+              <p class="m-0">08:00 - 17:00</p>
             </div>
           </div>
         </div>
@@ -116,7 +131,6 @@
   </div>
   <!-- Contact End -->
   <div id="footer-container"></div>
-
 
   <!-- Back to Top -->
   <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>

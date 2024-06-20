@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .footer-section h4 {
+            margin-right: 10px;
+        }
+        .footer-section .contact-info,
+        .footer-section .quick-links {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .footer-section .contact-info div,
+        .footer-section .quick-links div {
+            flex: 1;
+        }
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
     
@@ -51,83 +80,58 @@
             ></a>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-5">
+        <div class="col-lg-3 col-md-6 mb-5 footer-section">
           <h3 class="text-primary mb-4">Bize Ulaşın</h3>
-          <div class="d-flex">
+          <div class="contact-info">
             <h4 class="fa fa-map-marker-alt text-primary"></h4>
-            <div class="pl-3">
+            <div>
               <h5 class="text-white">Adres</h5>
               <p>Topçular Mahallesi, Ertuğrul Gazi Caddesi, No: 4, Iğdır/Merkez</p>
             </div>
           </div>
-          <div class="d-flex">
+          <div class="contact-info">
             <h4 class="fa fa-envelope text-primary"></h4>
-            <div class="pl-3">
-              <h5 class="text-white">Email</h5>
-              <p>iilkadim.76@gmail.com
-              </p>
-            </div>
-          </div>
-          <div class="d-flex">
-            <h4 class="fa fa-phone-alt text-primary"></h4>
-            <div class="pl-3">
-              <h5 class="text-white">Telefon</h5>
-              <p>0543 762 20 20
-</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-          <h3 class="text-primary mb-4">Hızlı Linkler</h3>
-          <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Anasayfa</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Hakkımızda</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Sınıflarımız</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Öğretmenlerimiz</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Duyurular</a
-            >
-            <a class="text-white" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>İletişim</a
-            >
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-          <h3 class="text-primary mb-4">Newsletter</h3>
-          <form action="">
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control border-0 py-4"
-                placeholder="Your Name"
-                required="required"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="email"
-                class="form-control border-0 py-4"
-                placeholder="Your Email"
-                required="required"
-              />
-            </div>
             <div>
-              <button
-                class="btn btn-primary btn-block border-0 py-3"
-                type="submit"
-              >
-                Submit Now
-              </button>
+              <h5 class="text-white">Email</h5>
+              <p>iilkadim.76@gmail.com</p>
             </div>
-          </form>
+          </div>
+          <div class="contact-info">
+            <h4 class="fa fa-phone-alt text-primary"></h4>
+            <div>
+              <h5 class="text-white">Telefon</h5>
+              <p>0543 762 20 20</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 footer-section">
+          <h3 class="text-primary mb-4">Hızlı Linkler</h3>
+          <div class="quick-links">
+            <div><a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Anasayfa</a></div>
+          </div>
+          <div class="quick-links">
+            <div><a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Hakkımızda</a></div>
+          </div>
+          <div class="quick-links">
+            <div><a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sınıflarımız</a></div>
+          </div>
+          <div class="quick-links">
+            <div><a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Öğretmenlerimiz</a></div>
+          </div>
+          <div class="quick-links">
+            <div><a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Duyurular</a></div>
+          </div>
+          <div class="quick-links">
+            <div><a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>İletişim</a></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+          <h3 class="text-primary mb-4">Konum</h3>
+          <div class="iframe-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.683203267439!2d44.02735317580177!3d39.926105171522615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406b20e604f7e73b%3A0xc4a2314555f21b61!2zVG9ww6d1bGFyLCBFcnR1xJ9ydWwgR2F6aSBDZC4gTm86NCwgNzYwMDAgScSfZMSxciBNZXJrZXovScSfZMSxcg!5e0!3m2!1str!2str!4v1718702114816!5m2!1str!2str" 
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+         referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
       </div>
       <div
