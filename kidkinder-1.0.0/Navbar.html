@@ -72,25 +72,12 @@
                     <a href="gallery.html" class="nav-item nav-link">Galeri</a>
                     <a href="contact.html" class="nav-item nav-link">İletişim</a>
                 </div>
-                
+               
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
 
-    <script>
-        $(document).ready(function() {
-            const token = localStorage.getItem('token');
-            if (token) {
-                $('#auth-button').text('Admin Paneli').attr('href', 'AdminPage.html');
-                $('#logout-button').show();
-            }
-
-            $('#logout-button').click(function() {
-                localStorage.removeItem('token');
-                window.location.href = 'LoginPage.html';
-            });
-        });
-    </script>
+   
 </body>
 </html>
