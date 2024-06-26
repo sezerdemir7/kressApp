@@ -1,16 +1,5 @@
 {
   "rewrites": [
     { "source": "/v1/:path*", "destination": "https://kres.onrender.com/v1/:path*" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=UTF-8"
-        }
-      ]
-    }
   ]
 }
